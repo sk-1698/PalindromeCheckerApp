@@ -1,34 +1,39 @@
 import java.util.LinkedList;
 import java.util.Deque;
 public class PalindromeCheckerApp {
-    //use case 9
+    //use case 10
     public static void main(String[] args) {
 
-        String original = "madam";
+        String original = "A man a plan a canal Panama";
 
-        boolean isPalindrome = checkPalindrome(original, 0, original.length() - 1);
+        // Normalize string:
+        // 1. Convert to lowercase
+        // 2. Remove spaces and non-alphanumeric characters
+        String normalized = original.toLowerCase().replaceAll("[^a-z0-9]", "");
+
+        boolean isPalindrome = checkPalindrome(normalized);
 
         if (isPalindrome) {
-            System.out.println("The string \"" + original + "\" is a Palindrome.");
+            System.out.println("\"" + original + "\" is a Palindrome (Ignoring case and spaces).");
         } else {
-            System.out.println("The string \"" + original + "\" is NOT a Palindrome.");
+            System.out.println("\"" + original + "\" is NOT a Palindrome.");
         }
     }
 
-    // Recursive method
-    public static boolean checkPalindrome(String str, int start, int end) {
+    // Two-pointer palindrome check
+    public static boolean checkPalindrome(String str) {
 
-        // Base condition: if pointers cross or meet
-        if (start >= end) {
-            return true;
+        int start = 0;
+        int end = str.length() - 1;
+
+        while (start < end) {
+            if (str.charAt(start) != str.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
         }
 
-        // If characters do not match
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
-
-        // Recursive call (move inward)
-        return checkPalindrome(str, start + 1, end - 1);
+        return true;
     }
 }
