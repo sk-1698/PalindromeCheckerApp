@@ -1,33 +1,18 @@
 import java.util.LinkedList;
 import java.util.Deque;
 public class PalindromeCheckerApp {
-    //use case 10
-    public static void main(String[] args) {
+    //use case 11
+    public boolean checkPalindrome(String input) {
 
-        String original = "A man a plan a canal Panama";
-
-        // Normalize string:
-        // 1. Convert to lowercase
-        // 2. Remove spaces and non-alphanumeric characters
-        String normalized = original.toLowerCase().replaceAll("[^a-z0-9]", "");
-
-        boolean isPalindrome = checkPalindrome(normalized);
-
-        if (isPalindrome) {
-            System.out.println("\"" + original + "\" is a Palindrome (Ignoring case and spaces).");
-        } else {
-            System.out.println("\"" + original + "\" is NOT a Palindrome.");
+        if (input == null) {
+            return false;
         }
-    }
-
-    // Two-pointer palindrome check
-    public static boolean checkPalindrome(String str) {
 
         int start = 0;
-        int end = str.length() - 1;
+        int end = input.length() - 1;
 
         while (start < end) {
-            if (str.charAt(start) != str.charAt(end)) {
+            if (input.charAt(start) != input.charAt(end)) {
                 return false;
             }
             start++;
@@ -35,5 +20,21 @@ public class PalindromeCheckerApp {
         }
 
         return true;
+    }
+
+    // MAIN METHOD (You are missing this)
+    public static void main(String[] args) {
+
+        String word = "radar";
+
+        PalindromeCheckerApp checker = new PalindromeCheckerApp();
+
+        boolean result = checker.checkPalindrome(word);
+
+        if (result) {
+            System.out.println("The string \"" + word + "\" is a Palindrome.");
+        } else {
+            System.out.println("The string \"" + word + "\" is NOT a Palindrome.");
+        }
     }
 }
