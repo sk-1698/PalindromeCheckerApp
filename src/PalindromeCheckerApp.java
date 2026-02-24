@@ -1,27 +1,28 @@
+import java.util.LinkedList;
+import java.util.Deque;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
 
-        String original = "level";
+        //UC7
+        String original = "radar";
 
-        // Create Queue (FIFO)
-        Queue<Character> queue = new LinkedList<>();
+        // Create Deque
+        Deque<Character> deque = new LinkedList<>();
 
-        // Create Stack (LIFO)
-        Stack<Character> stack = new Stack<>();
-
-        // Enqueue and Push characters
+        // Insert characters into deque
         for (int i = 0; i < original.length(); i++) {
-            char ch = original.charAt(i);
-            queue.add(ch);      // Enqueue
-            stack.push(ch);     // Push
+            deque.addLast(original.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Compare dequeue vs pop
-        while (!queue.isEmpty()) {
+        // Compare front and rear until deque is empty or has 1 element
+        while (deque.size() > 1) {
 
-            if (queue.remove() != stack.pop()) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+
+            if (front != rear) {
                 isPalindrome = false;
                 break;
             }
