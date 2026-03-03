@@ -3,21 +3,21 @@ import java.util.Deque;
 import java.util.Stack;
 
 public class PalindromeCheckerApp {
-    //use case 13
+    
     public static void main(String[] args) {
 
-        // Large test string for better measurement
+        
         String word = "A man a plan a canal Panama".toLowerCase().replaceAll("[^a-z0-9]", "");
 
         System.out.println("Testing string: " + word);
         System.out.println("----------------------------------");
 
-        // Two Pointer Method
+        
         long startTime1 = System.nanoTime();
         boolean result1 = twoPointerCheck(word);
         long endTime1 = System.nanoTime();
 
-        // Stack Method
+       
         long startTime2 = System.nanoTime();
         boolean result2 = stackCheck(word);
         long endTime2 = System.nanoTime();
@@ -37,7 +37,7 @@ public class PalindromeCheckerApp {
                 " | Time: " + (endTime3 - startTime3) + " ns");
     }
 
-    // Two Pointer Method
+    
     public static boolean twoPointerCheck(String str) {
         int start = 0;
         int end = str.length() - 1;
@@ -52,7 +52,7 @@ public class PalindromeCheckerApp {
         return true;
     }
 
-    // Stack Method
+    
     public static boolean stackCheck(String str) {
         Stack<Character> stack = new Stack<>();
 
@@ -68,7 +68,7 @@ public class PalindromeCheckerApp {
         return true;
     }
 
-    // Deque Method
+    
     public static boolean dequeCheck(String str) {
         Deque<Character> deque = new LinkedList<>();
 
